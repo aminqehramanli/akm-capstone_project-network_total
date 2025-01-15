@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8d7da;
+            color: #721c24;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .error-container {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #f5c6cb;
+            background-color: #f8d7da;
+            border-radius: 5px;
+            max-width: 400px;
+        }
+        .error-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .error-message {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .home-link {
+            text-decoration: none;
+            color: #721c24;
+            font-weight: bold;
+            border: 1px solid #721c24;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #ffffff;
+        }
+        .home-link:hover {
+            background-color: #e2e3e5;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-title">Oops!</div>
+        <div class="error-message">{{ message }}</div>
+        <a href="/" class="home-link">Go Back Home</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <title>Network Total</title>
+</head>
+
+<body>
+
+    <div class="navbar-container">
+        <div class="navbar-title">NetworkTotal</div>
+        <div class="navbar">
+            <a href="#home">Home</a>
+            <a href="#more-tools">More Tools</a>
+        </div>
+    </div>
+
+    <div class="top">
+        <img src="{{ url_for('static', filename='images/banner.png') }}" alt="Network Total Banner" />
+        <p>NETWORKTOTAL</p>
+    </div>
+
+    <section>
+        <div class="section1">
+            <p class="description">Analyze PCAP files to uncover malicious activity, detect network anomalies, and identify security breaches. Effortlessly upload, search, and investigate network traffic while contributing to a collective knowledge base for the cybersecurity community.</p>
+    </section>
+
+    <section>
+        <div class="form-container">
+            <h2>Analyze PCAP or Hash</h2>
+            <div class="tab-container">
+                <div class="tab active" id="file-tab" onclick="switchTab('file')">
+                    <p>File</p>
+                </div>
+                <div class="tab" id="hash-tab" onclick="switchTab('hash')">
+                    <p>Hash</p>
+                </div>
+            </div>
+            <form action="/" method="POST" enctype="multipart/form-data" id="file-form" style="display: block;">
+                <div class="form-input">
+                    <input type="file" name="file" id="pcap-file" accept=".pcap" />
+                    <label class="choose-btn" for="pcap-file">Choose PCAP File</label>
+                </div>
+                <button type="submit" class="submit-btn">Analyze</button>
+            </form>
+            <form action="/" method="POST" enctype="multipart/form-data" id="hash-form" style="display: none;">
+                <div class="form-input">
+                    <input type="text" name="hash_value" id="file-hash" placeholder="Enter file hash (MD5/SHA256)" />
+                </div>
+                <button type="submit" class="submit-btn">Analyze</button>
+            </form>
+            <footer>Only .pcap files are supported for uploads.</footer>
+        </div>
+    </section>
+
+    <footer class="footer-container">
+        <p>© 2024 NetworkTotal. All rights reserved. | Made by Group 1</p>
+    </footer>
+
+    <script>
+        function switchTab(tab) {
+            const fileForm = document.getElementById('file-form');
+            const hashForm = document.getElementById('hash-form');
+            const fileTab = document.getElementById('file-tab');
+            const hashTab = document.getElementById('hash-tab');
+
+            if (tab === 'file') {
+                fileTab.classList.add('active');
+                hashTab.classList.remove('active');
+                fileForm.style.display = 'block';
+                hashForm.style.display = 'none';
+            } else if (tab === 'hash') {
+                hashTab.classList.add('active');
+                fileTab.classList.remove('active');
+                fileForm.style.display = 'none';
+                hashForm.style.display = 'block';
+            }
+        }
+
+        // Prevent form resubmission on page reload
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
+
+</body>
+
+</html>
